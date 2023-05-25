@@ -19,7 +19,7 @@ docker version
 # Para rodar um container / imagem: Normalmente quando é executado pela 1º vez deverá realizar download da imagem:
 docker run -it ubuntu
 
-# Rodar update no container no caso do ambiente linux:
+# Rodar uptade no container no caso do ambiente linux:
 apt-get update
 
 # Rodar instalação de alguma aplicação:
@@ -28,9 +28,32 @@ apt-get install vim
 # Rodar container com Node (Para Javascript):
 docker run -it node
 
+# Rodar container em background:
+docker run -d nginx
 
 
 # Microsoft SQL Server - Ubuntu based images
 # Para baixar container com o Sql Server: https://hub.docker.com/_/microsoft-mssql-server
 docker pull mcr.microsoft.com/mssql/server
+
+
+# Lista todos os containers ativos no pc:
+docker ps
+
+# Lista todos os containers ativos e inativos:
+docler ps -a 
+
+
+# Como parar um container em execução: Pegar o CONTAINER ID para ser definido.
+docker stop <CONTAINER ID>
+
+
+# Definir e expor uma porta para conseguir acessar através do navegador: 
+# PORTA EXPOSTA : PORTA UTILIZADA
+docker run -d -p 80:80 nginx 
+
+# Iniciar um container existente. Necessitará do <CONTAINER ID> para iniciar:
+docker start <CONTAINER ID>
+
+
 
