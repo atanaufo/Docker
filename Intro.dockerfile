@@ -41,7 +41,7 @@ docker pull mcr.microsoft.com/mssql/server
 docker ps
 
 # Lista todos os containers ativos e inativos:
-docler ps -a 
+docker ps -a 
 
 
 # Como parar um container em execução: Pegar o CONTAINER ID para ser definido.
