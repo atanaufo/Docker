@@ -44,6 +44,16 @@ docker stop <CONTAINER ID>
 # Iniciar um container existente. Necessitará do <CONTAINER ID> para iniciar:
 docker start <CONTAINER ID>
 
+# Para remoção de Container:
+docker rm <CONTAINER ID>
+
+# Listar todas as images existentes:
+docker images -a
+
+# Com acesso a IMAGE ID, para remover:
+docker rmi <IMAGE ID>
+
+
 
 # Definir e expor uma porta para conseguir acessar através do navegador: 
 # PORTA EXPOSTA : PORTA UTILIZADA
@@ -55,9 +65,19 @@ docker run -d -p 80:80 nginx
 # https://blog.matheuscastiglioni.com.br/criando-minha-primeira-imagem-com-docker/
 
 # Para criar uma imagem personalizada:
-# Criar um arquivo chamado Dockerfile.
-# No terminal, executar o comando:
-docker build -t <nome author>/<AMBIENTE> .
+# Criar um arquivo chamado Dockerfile. Somente um arquivo para cada diretório.
+# Acessar o diretório via terminal, executar o comando:
+docker build .
+
+# Porém o comando acima irá apenas criar um build mas sem o nome e a tag.
+
+# Para isso devemos acrescentar o nome do repositório e a sua tag:
+docker build -t atanaufo/apache:1.0 .
+
+# Rodando o meu container criado:
+docker run -it atanaufo/apache:1.0
+
+
 
 # Exportar a image alterada / criada:
 

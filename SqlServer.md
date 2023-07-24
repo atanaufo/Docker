@@ -34,7 +34,7 @@ docker start <CONTAINER ID>
 # Para baixar container com o Sql Server: https://hub.docker.com/_/microsoft-mssql-server
 # https://balta.io/blog/sql-server-docker
 
-docker run --name sqlserver01 -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=W@Server2023" -p 1433:1433 -d mcr.microsoft.com/mssql/server
+docker run --name SqlServerTeste -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=W@Server2023" -p 1433:1433 -d mcr.microsoft.com/mssql/server
 
 # Rodar um restore de banco de dados:
 # https://www.youtube.com/watch?v=XHKLi1sA4TY
@@ -48,29 +48,28 @@ docker run --name sqlserver01 -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=W@Server2
     # dotnet dev-certs https --trust
 
 # Feito isto, os certificados HTTPS do .NET estarão atualizados e funcionais.
-# Desta forma, adicione os parâmetros Trusted_Connection e TrustServerCertificate ]
+# Desta forma, adicione os parâmetros Trusted_Connection e TrustServerCertificate
 # na sua Connection String como mostrado abaixo:
     # Server=localhost,1433;Database=balta;User ID=sa;Password=1q2w3e4r@#$;Trusted_Connection=False; TrustServerCertificate=True;
 
 # Para remoção de Container:
 docker rm <CONTAINER ID>
 
-# Para remoção da Imagem, deve-se listar todas as images existentes:
+# Listar todas as images existentes:
 docker images -a
 
 # Com acesso a IMAGE ID, para remover:
 docker rmi <IMAGE ID>
 
 
-# Exportar image criada:
-docker save <IMAGE ID ou IMAGE NAME> > D:\img\nome_image.tar
+
+# Exportar image criada / alterada - Porém primeiro deverá parar a imagem:
+docker commit <IMAGE ID> IMAGE:TAG
+
+docker commit 817acb823a66 mcr.microsoft.com/mssql/server:SqlServerTeste
+
+
+# Salvar como ...
+
 
 # Importar a image:
-docker load < D:\img\sqlServerDEV.tar
-# não funcionou. Testar depois.
-
-
-
-
-
-
