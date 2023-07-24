@@ -1,7 +1,7 @@
 #
 # Instalando Docker:
 #   1º - Instalar o aplicativo Docker Desktop através: https://www.docker.com/
-#   2º - Rodar no terminal do windows para instalar o Kernel Linux: wsl --update	
+#   2º - Rodar no terminal do windows para instalar o Kernel Linux: wsl --install -d Ubuntu
 #   3º - Identificar e baixar a imagem do SQL Server 2022: https://hub.docker.com/_/microsoft-mssql-server
 #   4º - Executar o comando conforme indicado no site acima: docker pull mcr.microsoft.com/mssql/server
 #		OBS: Sendo primeira vez, poderá demorar devido baixar os pacotes.
@@ -31,12 +31,6 @@ docker run -it node
 # Rodar container em background:
 docker run -d nginx
 
-
-# Microsoft SQL Server - Ubuntu based images
-# Para baixar container com o Sql Server: https://hub.docker.com/_/microsoft-mssql-server
-docker pull mcr.microsoft.com/mssql/server
-
-
 # Lista todos os containers ativos no pc:
 docker ps
 
@@ -47,13 +41,26 @@ docker ps -a
 # Como parar um container em execução: Pegar o CONTAINER ID para ser definido.
 docker stop <CONTAINER ID>
 
+# Iniciar um container existente. Necessitará do <CONTAINER ID> para iniciar:
+docker start <CONTAINER ID>
+
 
 # Definir e expor uma porta para conseguir acessar através do navegador: 
 # PORTA EXPOSTA : PORTA UTILIZADA
 docker run -d -p 80:80 nginx 
 
-# Iniciar um container existente. Necessitará do <CONTAINER ID> para iniciar:
-docker start <CONTAINER ID>
+
+# Analisar para criação de image:
+# https://woliveiras.com.br/posts/Criando-uma-imagem-Docker-personalizada/
+# https://blog.matheuscastiglioni.com.br/criando-minha-primeira-imagem-com-docker/
+
+# Para criar uma imagem personalizada:
+# Criar um arquivo chamado Dockerfile.
+# No terminal, executar o comando:
+docker build -t <nome author>/<AMBIENTE> .
+
+# Exportar a image alterada / criada:
 
 
+# Importar a imagem alterada / criada:
 
