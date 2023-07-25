@@ -66,6 +66,10 @@ docker run -d -p 80:80 nginx
 # https://blog.matheuscastiglioni.com.br/criando-minha-primeira-imagem-com-docker/
 # https://www.ic.unicamp.br/~william/howto/docker.html
 
+# Parecer ser o melhor conteúdo:
+# https://stack.desenvolvedor.expert/appendix/docker/criandoimagem.html
+# https://blog.rocketseat.com.br/dockerfile-principais-comandos-para-criar-a-receita-da-imagem/
+
 
 # Para criar uma imagem personalizada:
 # Criar um arquivo chamado Dockerfile. Somente um arquivo para cada diretório.

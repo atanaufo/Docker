@@ -52,13 +52,12 @@ docker run --name SqlServerTeste -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=W@Serv
 # na sua Connection String como mostrado abaixo:
     # Server=localhost,1433;Database=balta;User ID=sa;Password=1q2w3e4r@#$;Trusted_Connection=False; TrustServerCertificate=True;
 
-# Para remoção de Container:
-docker rm <CONTAINER ID>
 
 # Listar todas as images existentes:
 docker images -a
 
 # Com acesso a IMAGE ID, para remover:
+docker rm <IMAGE ID>
 docker rmi <IMAGE ID>
 
 
@@ -80,5 +79,7 @@ docker save 6c736ce5ac31 > c:\img\SqlServerTesteNova.tar
 
 ## Na máquina destino:
 
-docker load < c:\img\SqlServerTesteNova.tar
+docker load --input c:\img\SqlServerTesteNova.tar
 docker run <argumentos-para-container>
+
+docker run --name SqlServerTeste
