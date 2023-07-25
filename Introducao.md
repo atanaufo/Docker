@@ -61,8 +61,11 @@ docker run -d -p 80:80 nginx
 
 
 # Analisar para criação de image:
+
 # https://woliveiras.com.br/posts/Criando-uma-imagem-Docker-personalizada/
 # https://blog.matheuscastiglioni.com.br/criando-minha-primeira-imagem-com-docker/
+# https://www.ic.unicamp.br/~william/howto/docker.html
+
 
 # Para criar uma imagem personalizada:
 # Criar um arquivo chamado Dockerfile. Somente um arquivo para cada diretório.
@@ -79,8 +82,17 @@ docker run -it atanaufo/apache:1.0
 
 
 
-# Exportar a image alterada / criada:
+# Migrando Container Docker para outra Máquina:
+
+## Na máquina fonte:
+
+docker commit <nome-ou-id-container> <nome-nova-imagem>
+docker save <nome-nova-imagem> > /tmp/nome-nova-imagem .tar
 
 
-# Importar a imagem alterada / criada:
+## Na máquina destino:
+
+docker load < /tmp/nome-nova-imagem .tar
+docker run <argumentos-para-container>
+
 

@@ -69,7 +69,16 @@ docker commit <IMAGE ID> IMAGE:TAG
 docker commit 817acb823a66 mcr.microsoft.com/mssql/server:SqlServerTeste
 
 
-# Salvar como ...
+
+# Migrando Container Docker para outra Máquina:
+
+## Na máquina fonte:
+
+docker commit <nome-ou-id-container> <nome-nova-imagem>
+docker save 6c736ce5ac31 > c:\img\SqlServerTesteNova.tar
 
 
-# Importar a image:
+## Na máquina destino:
+
+docker load < c:\img\SqlServerTesteNova.tar
+docker run <argumentos-para-container>
