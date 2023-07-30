@@ -16,6 +16,28 @@
 # Para identificar qual versão instalada:
 docker version
 
+# Lista todos os containers ativos no pc:
+docker ps
+
+# Listar todos os containers - ativos e inativos:
+docker ps -a
+
+# Como parar um container em execução: Pegar o CONTAINER ID para ser definido.
+docker stop <CONTAINER ID>
+
+# Iniciar um container existente. Necessitará do <CONTAINER ID> para iniciar:
+docker start <CONTAINER ID>
+
+# Remover Container:
+docker rm <CONTAINER ID>
+
+# Listar todas as images existentes:
+docker images -a
+
+# Remover Imagem:
+docker rmi <IMAGE ID>
+
+
 # Para rodar um container / imagem: Normalmente quando é executado pela 1º vez deverá realizar download da imagem:
 docker run -it ubuntu
 
@@ -30,28 +52,6 @@ docker run -it node
 
 # Rodar container em background:
 docker run -d nginx
-
-# Lista todos os containers ativos no pc:
-docker ps
-
-# Lista todos os containers ativos e inativos:
-docker ps -a 
-
-
-# Como parar um container em execução: Pegar o CONTAINER ID para ser definido.
-docker stop <CONTAINER ID>
-
-# Iniciar um container existente. Necessitará do <CONTAINER ID> para iniciar:
-docker start <CONTAINER ID>
-
-# Para remoção de Container:
-docker rm <CONTAINER ID>
-
-# Listar todas as images existentes:
-docker images -a
-
-# Com acesso a IMAGE ID, para remover:
-docker rmi <IMAGE ID>
 
 
 
@@ -71,7 +71,7 @@ docker run -d -p 80:80 nginx
 # https://blog.rocketseat.com.br/dockerfile-principais-comandos-para-criar-a-receita-da-imagem/
 
 
-# Para criar uma imagem personalizada:
+# Criação de uma imagem personalizada:
 # Criar um arquivo chamado Dockerfile. Somente um arquivo para cada diretório.
 # Acessar o diretório via terminal, executar o comando:
 docker build .
@@ -91,12 +91,28 @@ docker run -it atanaufo/apache:1.0
 ## Na máquina fonte:
 
 docker commit <nome-ou-id-container> <nome-nova-imagem>
-docker save <nome-nova-imagem> > /tmp/nome-nova-imagem .tar
+
+docker commit 817acb823a66 mcr.microsoft.com/mssql/server:SqlServerTeste
+
+docker save 6c736ce5ac31 > c:\img\SqlServerTesteNova.tar
 
 
 ## Na máquina destino:
 
-docker load < /tmp/nome-nova-imagem .tar
+docker load --input c:\img\SqlServerTesteNova.tar
 docker run <argumentos-para-container>
 
+docker run --name SqlServerTeste
+
+
+
+
+
+# Rodar um restore de banco de dados:
+# https://www.youtube.com/watch?v=XHKLi1sA4TY
+
+# Dicas:
+# https://balta.io/blog/sql-server-docker
+
+# https://www.mssqltips.com/sqlservertip/5945/create-sql-server-on-linux-docker-container-using-dockerfile-part-5/
 

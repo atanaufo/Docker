@@ -19,8 +19,8 @@ docker version
 # Lista todos os containers ativos no pc:
 docker ps
 
-# Lista todos os containers ativos e inativos:
-docker ps -a 
+# Listar todos os containers - ativos e inativos:
+docker ps -a
 
 # Como parar um container em execução: Pegar o CONTAINER ID para ser definido.
 docker stop <CONTAINER ID>
@@ -28,58 +28,53 @@ docker stop <CONTAINER ID>
 # Iniciar um container existente. Necessitará do <CONTAINER ID> para iniciar:
 docker start <CONTAINER ID>
 
-
-
-# Microsoft SQL Server - Ubuntu based images
-# Para baixar container com o Sql Server: https://hub.docker.com/_/microsoft-mssql-server
-# https://balta.io/blog/sql-server-docker
-
-docker run --name SqlServerTeste -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=W@Server2023" -p 1433:1433 -d mcr.microsoft.com/mssql/server
-
-# Rodar um restore de banco de dados:
-# https://www.youtube.com/watch?v=XHKLi1sA4TY
-
-
-
-
-# Nas novas versões da imagem do SQL Server, no Windows, tem ocorrido um problema de SSL. 
-# Para resolver este problema, primeiro execute os seguintes comandos:
-    # dotnet dev-certs https --clean
-    # dotnet dev-certs https --trust
-
-# Feito isto, os certificados HTTPS do .NET estarão atualizados e funcionais.
-# Desta forma, adicione os parâmetros Trusted_Connection e TrustServerCertificate
-# na sua Connection String como mostrado abaixo:
-    # Server=localhost,1433;Database=balta;User ID=sa;Password=1q2w3e4r@#$;Trusted_Connection=False; TrustServerCertificate=True;
-
+# Remover Container:
+docker rm <CONTAINER ID>
 
 # Listar todas as images existentes:
 docker images -a
 
-# Com acesso a IMAGE ID, para remover:
-docker rm <IMAGE ID>
+# Remover Imagem:
 docker rmi <IMAGE ID>
 
 
 
-# Exportar image criada / alterada - Porém primeiro deverá parar a imagem:
-docker commit <IMAGE ID> IMAGE:TAG
+# Microsoft SQL Server - Ubuntu based images
 
-docker commit 817acb823a66 mcr.microsoft.com/mssql/server:SqlServerTeste
-
+docker run --name LABSQLSERVER -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=W@Server2023" "MSSQL_PID=Developer" -p 1433:1433 -d docker pull mcr.microsoft.com/mssql/server:2022-latest
 
 
 # Migrando Container Docker para outra Máquina:
 
 ## Na máquina fonte:
+# Primeiro deverá parar a imagem:
 
-docker commit <nome-ou-id-container> <nome-nova-imagem>
-docker save 6c736ce5ac31 > c:\img\SqlServerTesteNova.tar
+docker commit 817acb823a66 mcr.microsoft.com/mssql/server:LABSQLSERVER
+docker save 6c736ce5ac31 > d:\img\LABSQLSERVER.tar
 
 
 ## Na máquina destino:
 
-docker load --input c:\img\SqlServerTesteNova.tar
+docker load --input d:\img\LABSQLSERVER.tar
+
 docker run <argumentos-para-container>
 
 docker run --name SqlServerTeste
+
+
+
+
+
+# Rodar um restore de banco de dados:
+# https://www.youtube.com/watch?v=XHKLi1sA4TY
+
+# Dicas:
+# https://balta.io/blog/sql-server-docker
+
+
+
+# Rodar a image customizada pelo sqlserver \ Dockerfile:
+
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=W@Server2023' -p 1415:1433 --name sql-linuxcon15 -d -h linuxsql15 sql2017centos:1.0
+
+
