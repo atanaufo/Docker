@@ -115,4 +115,3 @@ docker run --name SqlServerTeste
 # https://balta.io/blog/sql-server-docker
 
 # https://www.mssqltips.com/sqlservertip/5945/create-sql-server-on-linux-docker-container-using-dockerfile-part-5/
-
