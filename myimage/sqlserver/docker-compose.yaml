@@ -33,4 +33,7 @@ services:
     #
     #       docker-compose up -d
     #
+    #  Para baixar:   docker-compose down
+    #
+    #
 
