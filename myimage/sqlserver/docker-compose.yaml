@@ -23,3 +23,14 @@ services:
 
     # Realizar download:
     # https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2019.bak
+
+
+    # Para executar o arquivo docker compose.
+    #
+    # Acessar via terminal na pasta do arquivo.
+    #
+    # A instrução a seguir permitirá que se criem os containers especificados no arquivo docker-compose.yml:
+    #
+    #       docker-compose up -d
+    #
+
