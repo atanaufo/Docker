@@ -40,7 +40,7 @@ docker rmi <IMAGE ID>
 
 # Microsoft SQL Server - Ubuntu based images
 
-docker run --name LABSQLSERVER -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=W@Server2023" "MSSQL_PID=Developer" -p 1433:1433 -d docker pull mcr.microsoft.com/mssql/server:2022-latest
+docker run --name LABSQLSERVER -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Atana@2023" "MSSQL_PID=Developer" -p 1433:1433 -d docker pull mcr.microsoft.com/mssql/server:2022-latest
 
 
 # Migrando Container Docker para outra Máquina:

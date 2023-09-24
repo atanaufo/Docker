@@ -1,9 +1,10 @@
 version: '2.1'
 services:
   sqlserver:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
-      SA_PASSWORD: "Sqlserver2023!"
+      # SA_PASSWORD: "Atana@2023"
+      MSSQL_SA_PASSWORD: "Atana@2023"
       ACCEPT_EULA: "Y"
       MSSQL_PID: "Developer"
     ports:
@@ -26,14 +27,13 @@ services:
 
 
     # Para executar o arquivo docker compose.
-    #
     # Acessar via terminal na pasta do arquivo.
-    #
     # A instrução a seguir permitirá que se criem os containers especificados no arquivo docker-compose.yml:
     #
     #       docker-compose up -d
     #
-    #  Para baixar:   docker-compose down
+    #  
+    # Para baixar:   docker-compose down
     #
     #
 
