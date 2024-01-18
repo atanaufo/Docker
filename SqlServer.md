@@ -11,7 +11,17 @@
 #   1º - Instalar Extensão no Visual Code.
 #
 
+# Etapa 1 - Baixando a imagem:
+docker pull mcr.microsoft.com/mssql/server:2022-latest
+
+# Etapa 2 - Executando a imagem - Microsoft SQL Server - Ubuntu based images
+docker run -e --name laboratorio "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=laboratorio@2024" "MSSQL_PID=Developer" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+
+
+
+# ##################################################
 # Principais comando a ser executado no terminal:
+# ##################################################
 
 # Para identificar qual versão instalada:
 docker version
@@ -38,31 +48,6 @@ docker images -a
 docker rmi <IMAGE ID>
 
 
-# Microsoft SQL Server - Ubuntu based images
-
-docker run --name LABSQLSERVER -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Atana@2023" "MSSQL_PID=Developer" -p 1433:1433 -d docker pull mcr.microsoft.com/mssql/server:2022-latest
-
-
-# Migrando Container Docker para outra Máquina:
-
-## Na máquina fonte:
-# Primeiro deverá parar a imagem:
-
-docker commit 817acb823a66 mcr.microsoft.com/mssql/server:LABSQLSERVER
-docker save 6c736ce5ac31 > d:\img\LABSQLSERVER.tar
-
-
-## Na máquina destino:
-
-docker load --input d:\img\LABSQLSERVER.tar
-
-docker run <argumentos-para-container>
-
-docker run --name SqlServerTeste
-
-
-
-
 
 # Rodar um restore de banco de dados:
 # https://www.youtube.com/watch?v=XHKLi1sA4TY
@@ -73,7 +58,6 @@ docker run --name SqlServerTeste
 
 
 # Rodar a image customizada pelo sqlserver \ Dockerfile:
-
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=W@Server2023' -p 1415:1433 --name sql-linuxcon15 -d -h linuxsql15 sql2017centos:1.0
 
 

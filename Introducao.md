@@ -27,6 +27,13 @@ docker stop <CONTAINER ID>
 
 # Iniciar um container existente. Necessitará do <CONTAINER ID> para iniciar:
 docker start <CONTAINER ID>
+# Resumindo: https://www.youtube.com/watch?v=eTyFKf3MICk
+
+docker build -- Criar minha imagem
+docker pull -- Obter uma imagem
+docker run -- Executar imagem obtida.
+
+
 
 # Remover Container:
 docker rm <CONTAINER ID>
