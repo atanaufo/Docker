@@ -15,7 +15,7 @@
 docker pull mcr.microsoft.com/mssql/server:2022-latest
 
 # Etapa 2 - Executando a imagem - Microsoft SQL Server - Ubuntu based images
-docker run -e --name laboratorio "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=laboratorio@2024" "MSSQL_PID=Developer" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+docker run -e --name laboratorio "ACCEPT_EULA=Y" "MSSQL_SA_PASSWORD=Laboratorio@2024" "MSSQL_PID=Developer" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 
 
 
