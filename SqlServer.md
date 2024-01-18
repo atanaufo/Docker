@@ -15,7 +15,19 @@
 docker pull mcr.microsoft.com/mssql/server:2022-latest
 
 # Etapa 2 - Executando a imagem - Microsoft SQL Server - Ubuntu based images
-docker run -e --name laboratorio "ACCEPT_EULA=Y" "MSSQL_SA_PASSWORD=Laboratorio@2024" "MSSQL_PID=Developer" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Laboratorio@2024" -e "MSSQL_PID=Developer" -p 1433:1433  --name laboratorio --hostname laboratorio -d mcr.microsoft.com/mssql/server:2022-latest
+
+# Ao tentar conectar no cliente sql e ocorrer erro de certificado, executar os comandos a seguir no terminal:
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
+
+# Etapa 3 - Restaurar backup de uma base de dados existente no Docker:
+docker cp D:\VM\Instaladores\Bases\AdventureWorks2012.bak e3630575e84b:/var/opt/mssql/data
+docker cp D:\VM\Instaladores\Bases\AdventureWorks2019.bak e3630575e84b:/var/opt/mssql/data
+
+# Etapa Final - Stop e Start:
+docker stop e3630575e84b
+docker start e3630575e84b
 
 
 
@@ -54,7 +66,7 @@ docker rmi <IMAGE ID>
 
 # Dicas:
 # https://balta.io/blog/sql-server-docker
-
+# https://www.youtube.com/watch?v=XHKLi1sA4TY&t=75s
 
 
 # Rodar a image customizada pelo sqlserver \ Dockerfile:
