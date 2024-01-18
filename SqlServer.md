@@ -22,8 +22,14 @@ dotnet dev-certs https --clean
 dotnet dev-certs https --trust
 
 # Etapa 3 - Restaurar backup de uma base de dados existente no Docker:
+# Copiar os arquivos de BKP de uma origem no computador para dentro do Container:
 docker cp D:\VM\Instaladores\Bases\AdventureWorks2012.bak e3630575e84b:/var/opt/mssql/data
 docker cp D:\VM\Instaladores\Bases\AdventureWorks2019.bak e3630575e84b:/var/opt/mssql/data
+
+# Copiar arquivo dentro do Container para gerar cópia de backup para um diretório no computador:
+docker cp e3630575e84b:/var/opt/mssql/data/AdventureWorks2012.bak D:\VM\BKP\FULL
+docker cp e3630575e84b:/var/opt/mssql/data/AdventureWorks2019.bak D:\VM\BKP\FULL
+
 
 # Etapa Final - Stop e Start:
 docker stop e3630575e84b
