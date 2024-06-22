@@ -77,5 +77,3 @@ docker rmi <IMAGE ID>
 
 # Rodar a image customizada pelo sqlserver \ Dockerfile:
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=W@Server2023' -p 1415:1433 --name sql-linuxcon15 -d -h linuxsql15 sql2017centos:1.0
-
-
